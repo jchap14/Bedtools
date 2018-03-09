@@ -35,7 +35,7 @@ done
 
 ## find the BED with the lowest # & set it as a variable
 echo "find the BED with the lowest # & set it as a variable"
-MIN=\`cat $NAME.BEDCount | sort -n | head -1\`
+MIN=\`cat $NAME.BEDCount | cut -f1 -d ' ' | sort -n | head -1\`
 
 ## subsample each BED to the MIN # of reads
 echo "subsample each BED to the MIN # of reads"
@@ -52,6 +52,6 @@ echo "Done!"
 EOF
 
 ## qsub then remove the tempscript
-# qsub $NAME.tempscript.sh 
+qsub $NAME.tempscript.sh 
 sleep 1
 #rm $NAME.tempscript.sh
