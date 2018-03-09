@@ -14,6 +14,16 @@ CHROMSIZES=/srv/gsfs0/projects/snyder/chappell/Annotations/GENCODE-v19-GRCh37-hg
 ##### write tempscripts for each
 cat > $NAME.tempscript.sh << EOF
 #!/bin/bash
+#$ -N $NAME.subSampBED
+#$ -j y
+#$ -cwd
+#$ -V
+#$ -l h_vmem=1G
+#$ -pe shm 12
+#$ -l h_rt=5:59:00
+#$ -l s_rt=5:59:00
+
+########## Commands
 
 ## run the bedtools genomecov command to calculate the coverage into bedGraph format
 echo "run the bedtools genomecov command to calculate the coverage into bedGraph format"
@@ -27,6 +37,6 @@ echo "Done!"
 EOF
 
 ##### bash then remove the tempscript
-bash $NAME.tempscript.sh
+qsub $NAME.tempscript.sh
 sleep 1
 # rm $NAME.tempscript.sh
