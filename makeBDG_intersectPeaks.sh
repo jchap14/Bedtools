@@ -14,7 +14,7 @@ CHROMSIZES=/srv/gsfs0/projects/snyder/chappell/Annotations/GENCODE-v19-GRCh37-hg
 ##### write tempscripts for each
 cat > $OUTPREFIX.tempscript.sh << EOF
 #!/bin/bash
-#$ -N $OUTPREFIX.subSampBED
+#$ -N $OUTPREFIX.BDGcoverage
 #$ -j y
 #$ -cwd
 #$ -V
