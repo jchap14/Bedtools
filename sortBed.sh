@@ -26,6 +26,9 @@ cat $BEDFILE | tr -d '"' | sort -k 1,1 -k2,2n > $NAME.sorted.bed
 
 ## change name back to original
 # mv $NAME.sorted.bed $NAME.bed
+
+echo "Done!"
+
 EOF
 
 ##### bash then remove the tempscript
