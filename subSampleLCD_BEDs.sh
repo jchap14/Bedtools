@@ -45,6 +45,7 @@ do
     cat \$line | shuf | head -n \$MIN > \$NM.shuf.bed
     echo "sorting \$NM.shuf.bed"
     sort -k 1,1 -k2,2n \$NM.shuf.bed > \$NM.subSamp2.bed
+    rm \$NM.shuf.bed
 done
 echo "Done!"
 ##
