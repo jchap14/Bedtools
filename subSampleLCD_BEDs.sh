@@ -52,6 +52,6 @@ echo "Done!"
 EOF
 
 ## qsub then remove the tempscript
-qsub $NAME.tempscript.sh 
+# qsub $NAME.tempscript.sh 
 sleep 1
 #rm $NAME.tempscript.sh
