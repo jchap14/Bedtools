@@ -26,7 +26,7 @@ cat > $NAME.tempscript.sh << EOF
 cat `cat $BEDLIST | tr '\n' ' '` > $NAME.catBED
 ## run the bedtools sort command
 echo "removing quotes & sorting $BEDFILE"
-cat $NAME.catBED | tr -d '"' | bedtools sort -i stdin > $NAME.sorted.bed
+cat $NAME.catBED | tr -d '"' | grep -v "chrM" | bedtools sort -i stdin > $NAME.sorted.bed
 mergeBed -s -i $NAME.sorted.bed > $NAME.avg.bed
 #
 EOF
