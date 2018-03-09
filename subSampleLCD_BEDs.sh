@@ -44,12 +44,13 @@ do
     NM=\`echo \$line | sed 's:.*/::'\`
     cat \$line | shuf | head -n \$MIN > \$NM.shuf.bed
     echo "sorting \$NM.shuf.bed"
-    sort -k 1,1 -k2,2n \$NM.shuf.bed > $NAME.subSamp2.bed
+    sort -k 1,1 -k2,2n \$NM.shuf.bed > \$NM.subSamp2.bed
 done
+echo "Done!"
 ##
 EOF
 
 ## qsub then remove the tempscript
 qsub $NAME.tempscript.sh 
 sleep 1
-rm $NAME.tempscript.sh
+#rm $NAME.tempscript.sh
