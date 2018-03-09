@@ -12,9 +12,9 @@ OUTPREFIX=$3
 CHROMSIZES=/srv/gsfs0/projects/snyder/chappell/Annotations/GENCODE-v19-GRCh37-hg19/hg19.chrom.sizes
 
 ##### write tempscripts for each
-cat > $NAME.tempscript.sh << EOF
+cat > $OUTPREFIX.tempscript.sh << EOF
 #!/bin/bash
-#$ -N $NAME.subSampBED
+#$ -N $OUTPREFIX.subSampBED
 #$ -j y
 #$ -cwd
 #$ -V
@@ -37,6 +37,6 @@ echo "Done!"
 EOF
 
 ##### bash then remove the tempscript
-qsub $NAME.tempscript.sh
+qsub $OUTPREFIX.tempscript.sh
 sleep 1
-# rm $NAME.tempscript.sh
+# rm $OUTPREFIX.tempscript.sh
