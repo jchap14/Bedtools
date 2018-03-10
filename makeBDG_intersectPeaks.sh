@@ -31,11 +31,11 @@ bedtools genomecov -bg -i $BEDFILE -g $CHROMSIZES > $OUTPREFIX.hg19.bdg
 
 ## intersect the bedGraph with regions of interest (e.g. peaks)
 echo "intersecting bedGraph with regions of interest"
-bedtools intersect -a $OUTPREFIX.hg19.bdg -b $PEAKFILE > $OUTPREFIX.avgSigUnionPeaks.bdg
+bedtools intersect -a $OUTPREFIX.hg19.bdg -b $PEAKFILE > $OUTPREFIX.TEMP.bdg
 
 ## sort bedgraphs
 echo "sorting bedGraphs"
-sort -k 1,1 -k2,2n $OUTPREFIX.avgSigUnionPeaks.bdg > $OUTPREFIX.avgSigUnionPeaks.sorted.bdg
+sort -k 1,1 -k2,2n $OUTPREFIX.TEMP.bdg > $OUTPREFIX.avgSigUnionPeaks.bdg
 
 echo "Done!"
 EOF
