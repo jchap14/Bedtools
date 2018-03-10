@@ -22,7 +22,7 @@ cat > $NAME.tempscript.sh << EOF
 
 ## run the bedtools sort command
 echo "removing quotes & sorting $BEDFILE"
-cat $BEDFILE | tr -d '"' | sort -k 1,1 -k2,2n > $NAME.sorted.bed
+cat $BEDFILE | tr -d '"' | sort -k 1,1 -k 2,2n > $NAME.sorted.bed
 
 ## change name back to original
 # mv $NAME.sorted.bed $NAME.bed

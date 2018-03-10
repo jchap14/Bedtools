@@ -36,6 +36,8 @@ bedtools intersect -a $OUTPREFIX.hg19.bdg -b $PEAKFILE > $OUTPREFIX.TEMP.bdg
 ## sort bedgraphs
 echo "sorting bedGraphs"
 sort -k 1,1 -k2,2n $OUTPREFIX.TEMP.bdg > $OUTPREFIX.avgSigUnionPeaks.bdg
+rm $OUTPREFIX.TEMP.bdg 
+# rm $OUTPREFIX.hg19.bdg
 
 echo "Done!"
 EOF
