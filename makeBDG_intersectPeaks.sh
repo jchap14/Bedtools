@@ -5,11 +5,14 @@
 ##        bash makeBDG_intersectPeaks.sh $PEAKFILE $BEDFILE $OUTNAME; done
 ## e.g.:  bash makeBDG_intersectPeaks.sh SLO.union.peaks.bed LS.subSamp2.bed LSxSLO
 
+## add modules
+module add ucsc_tools
+
 ##### set variables
 PEAKFILE=$1
 BEDFILE=$2
 OUTPREFIX=$3
-CHROMSIZES=/srv/gsfs0/projects/snyder/chappell/Annotations/GENCODE-v19-GRCh37-hg19/hg19.chrom.sizes
+CHROMSIZES=/srv/gsfs0/projects/snyder/chappell/Annotations/UCSC-hg19/hg19.chrom.sizes
 
 ##### write tempscripts for each
 cat > $OUTPREFIX.tempscript.sh << EOF
@@ -38,6 +41,11 @@ echo "sorting bedGraphs"
 sort -k 1,1 -k2,2n $OUTPREFIX.TEMP.bdg > $OUTPREFIX.avgSigUnionPeaks.bdg
 rm $OUTPREFIX.TEMP.bdg 
 # rm $OUTPREFIX.hg19.bdg
+
+## create bigwigs from bedgraphs
+echo "convert bedGraph to bigWig"
+bedGraphToBigWig $OUTPREFIX.hg19.bdg $CHROMSIZES $OUTPREFIX.hg19.bw
+bedGraphToBigWig $OUTPREFIX.avgSigUnionPeaks.bdg $CHROMSIZES $OUTPREFIX.avgSigUnionPeaks.bw
 
 echo "Done!"
 EOF
