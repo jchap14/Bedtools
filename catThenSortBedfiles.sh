@@ -30,7 +30,7 @@ cat $NAME.catBED | tr -d '"' > $NAME.noQuote.bed
 echo "removing quotes from bedfile"
 cat $NAME.noQuote.bed | grep -v "chrM" > $NAME.noM.bed
 echo "sorting bedfile"
-sort -k 1,1 -k2,2n $NAME.noM.bed > $NAME.sorted.bed
+sort -k 1,1 -k2,2n $NAME.noM.bed > $NAME.subSamp.bed
 echo "removing intermediate files"
 rm $NAME.catBED $NAME.noQuote.bed $NAME.noM.bed
 echo "Done!"
