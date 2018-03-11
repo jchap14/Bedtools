@@ -47,6 +47,9 @@ echo "convert bedGraph to bigWig"
 bedGraphToBigWig $OUTPREFIX.hg19.bdg $CHROMSIZES $OUTPREFIX.hg19.bw
 bedGraphToBigWig $OUTPREFIX.avgSigUnionPeaks.bdg $CHROMSIZES $OUTPREFIX.avgSigUnionPeaks.bw
 
+## delete bedgraphs
+rm $OUTPREFIX.avgSigUnionPeaks.bdg $OUTPREFIX.hg19.bdg
+
 echo "Done!"
 EOF
 
