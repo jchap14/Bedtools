@@ -4,9 +4,11 @@
 
 ## define variables
 BIGWIGS=`find *.nmSort.bw | tr '\n' ' '`
+FIRSTFILE=`echo $BIGWIGS | cut -f1 -d ' '`
+NAME=`basename $FIRSTFILE .nmSort.bw`
 
 ## write a tempscript to be looped over
-cat > BWcorr.tempscript.sh << EOF
+cat > $NAME.tempscript.sh << EOF
 #!/bin/bash
 #$ -N $NAME.BWcorr
 #$ -j y
@@ -23,6 +25,6 @@ wigCorrelate $BIGWIGS > bigWig_correlation.txt
 EOF
 
 ## qsub then remove the tempscript
-qsub BWcorr.tempscript.sh 
+qsub $NAME.tempscript.sh 
 sleep 1
-rm BWcorr.tempscript.sh
+rm $NAME.tempscript.sh
