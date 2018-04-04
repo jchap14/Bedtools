@@ -23,6 +23,6 @@ wigCorrelate $BIGWIGS > bigWig_correlation.txt
 EOF
 
 ## qsub then remove the tempscript
-bash BWcorr.tempscript.sh 
+qsub BWcorr.tempscript.sh 
 sleep 1
 rm BWcorr.tempscript.sh
